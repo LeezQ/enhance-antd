@@ -3,7 +3,7 @@ import { Table } from 'antd';
 
 import { storiesOf } from '@storybook/react';
 
-import enhanceTable from './index';
+import EnhanceTable from './index';
 
 const requestMethod = params =>
   new Promise(resolve => {
@@ -69,10 +69,16 @@ class Demo extends Component {
   }
 
   render() {
-    return <Table columns={this.columns} {...this.props} pagination={{ pageSize: 2 }} />;
+    return (
+      <EnhanceTable
+        columns={this.columns}
+        {...this.props}
+        pagination={{ pageSize: 2 }}
+        requestMethod={requestMethod}
+        onComplete={params => console.log(params)}
+      />
+    );
   }
 }
 
-const EnhanceDemo = enhanceTable(Demo, { requestMethod });
-
-storiesOf('EnhanceTable', module).add('表格', () => <EnhanceDemo />);
+storiesOf('EnhanceTable', module).add('表格', () => <Demo />);

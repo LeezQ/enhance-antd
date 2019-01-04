@@ -7,18 +7,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import React from 'react';
-const enhanceTable = (WrapComponent, config) => class EnhanceComponent extends React.Component {
+import { Table } from 'antd';
+class EnhanceTable extends React.Component {
     constructor(props) {
         super(props);
         this.getData = params => {
             this.setState({
                 loading: true,
             }, () => __awaiter(this, void 0, void 0, function* () {
-                const ret = yield config.requestMethod(params);
+                const ret = yield this.props.requestMethod(params);
                 this.setState({
                     dataSource: ret.data,
                     loading: false,
                 });
+                this.props.onComplete(params);
             }));
         };
         this.state = {
@@ -32,10 +34,8 @@ const enhanceTable = (WrapComponent, config) => class EnhanceComponent extends R
     render() {
         const newProps = Object.assign({}, this.state, { onChange: params => {
                 this.getData(params);
-            }, pagination: {
-                pageSize: 1,
-            } });
-        return React.createElement(WrapComponent, Object.assign({}, this.props, newProps));
+            }, pagination: Object.assign({ pageSize: 1 }, this.props.pagination) });
+        return React.createElement(Table, Object.assign({}, this.props, newProps));
     }
-};
-export default enhanceTable;
+}
+export default EnhanceTable;
