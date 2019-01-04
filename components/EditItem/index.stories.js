@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
-
-import { Button } from '@storybook/react/demo';
-
 import { Input } from 'antd';
 
 import AcpEditItem from './index';
