@@ -41,14 +41,11 @@ class Demo extends Component {
         title: '办件部门',
         dataIndex: 'recvDeptName',
         key: 'recvDeptName',
-        fixed: true,
       },
       {
         title: '申报号',
-        width: 220,
         dataIndex: 'projId',
         key: 'projId',
-        fixed: true,
       },
       {
         title: '事项名称',
