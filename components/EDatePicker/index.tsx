@@ -1,5 +1,4 @@
-import React, { CSSProperties } from 'react';
-import { useState } from 'react';
+import React, { CSSProperties, useState } from 'react';
 import { DatePicker, Divider } from 'antd';
 import moment, { Moment } from 'moment';
 import styled from 'styled-components';
